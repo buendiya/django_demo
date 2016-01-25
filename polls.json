@@ -1,0 +1,11 @@
+[
+{
+    "fields": {
+        "status": null,
+        "question_text": "How",
+        "pub_date": null
+    },
+    "model": "polls.question",
+    "pk": 1
+}
+]

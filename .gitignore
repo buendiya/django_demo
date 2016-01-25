@@ -1,0 +1,12 @@
+target/
+.pydevproject
+.project
+test.py
+polls/migrations
+*/migrations
+log
+*.py[cod]
+db.sqlite3
+.settings/
+Django-1.8-py2.py3-none-any.whl
+my.cnf
