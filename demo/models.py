@@ -11,12 +11,17 @@ class Choice(models.Model):
         return self.choice_text
 
 
+class ProxyTest(Test):
+    class Meta:
+        proxy = True
+
+
 class Author(models.Model):
     name = models.CharField(max_length=50)
     age = models.PositiveIntegerField(null=True, blank=True)
     alias = models.CharField(max_length=50, null=True, blank=True)
     goes_by = models.CharField(max_length=50, null=True, blank=True)
-    
+
     def __str__(self):
         return self.name
 
@@ -24,7 +29,7 @@ class Author(models.Model):
 class Publisher(models.Model):
     name = models.CharField(max_length=300)
     num_awards = models.IntegerField()
-    
+
     def __str__(self):
         return self.name
 
@@ -37,7 +42,7 @@ class Book(models.Model):
     authors = models.ManyToManyField(Author)
     publisher = models.ForeignKey(Publisher)
     pubdate = models.DateField()
-    
+
     def __str__(self):
         return self.name
 
@@ -45,17 +50,21 @@ class Book(models.Model):
 class Chapter(models.Model):
     name = models.CharField(max_length=300)
     book = models.ForeignKey(Book, related_name='chapters')
-    
+
     def __str__(self):
         return self.name
-
 
 
 class Store(models.Model):
     name = models.CharField(max_length=300)
     books = models.ManyToManyField(Book)
     registered_users = models.PositiveIntegerField()
-    
+
     def __str__(self):
         return self.name
 
+
+class Car(models.Model):
+    name = models.CharField(max_length=255)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+    photo = models.ImageField(upload_to='cars')

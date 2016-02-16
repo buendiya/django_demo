@@ -108,3 +108,4 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'polls', 'templates'), 'templates']
 
 # SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
+from CONFIGS import *
