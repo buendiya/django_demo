@@ -12,5 +12,6 @@ def get_car(request):
     res.set_cookie('hello', 'world')
     logger.info('hello world')
     context = {'first_name': 'jing'}
+    # the following do the same thing
 #     return TemplateResponse(request, 'test_render.html', context)
     return render(request, 'test_render.html', context)
