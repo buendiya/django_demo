@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'snippets',
     'demo',
     'contenttype_generic',
+    'nested_inline',
 )
 
 MIDDLEWARE_CLASSES = (
