@@ -38,13 +38,13 @@ class Publisher(models.Model):
 
 
 class Book(models.Model):
-    name = models.CharField(max_length=300, verbose_name='名字')
-    pages = models.IntegerField(verbose_name='页数')
-    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='价格')
-    rating = models.FloatField(verbose_name='排名')
-    authors = models.ManyToManyField(Author, verbose_name='作者')
-    publisher = models.ForeignKey(Publisher, verbose_name='出版社')
-    pubdate = models.DateField(verbose_name='出版时间')
+    name = models.CharField(max_length=300, verbose_name='名字', blank=True)
+    pages = models.IntegerField(verbose_name='页数', blank=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='价格', blank=True)
+    rating = models.FloatField(verbose_name='排名', blank=True)
+    authors = models.ManyToManyField(Author, verbose_name='作者', blank=True)
+    publisher = models.ForeignKey(Publisher, verbose_name='出版社', blank=True)
+    pubdate = models.DateField(verbose_name='出版时间', blank=True)
 
     def __str__(self):
         return self.name
@@ -73,27 +73,27 @@ class Car(models.Model):
     photo = models.ImageField(upload_to='cars', blank=True)
 
 
-# class RevealAccess(object):
-#     """A data descriptor that sets and returns values
-#        normally and prints a message logging their access.
-#     """
-# 
-#     def __init__(self, initval=None, name='var'):
-#         self.val = initval
-#         self.name = name
-# 
-#     def __get__(self, obj, objtype):
-#         print('Retrieving', self.name)
-#         return self.val
-# 
-#     def __set__(self, obj, val):
-#         print('Updating', self.name)
-#         self.val = val
-# 
-# class CustomOneToOneField(models.OneToOneField):
-#     serialize = RevealAccess(True, 'serialize')
-# 
-# 
-# class Garage(models.Model):
-#     car = CustomOneToOneField(Car, primary_key=True)
+class RevealAccess(object):
+    """A data descriptor that sets and returns values
+       normally and prints a message logging their access.
+    """
+  
+    def __init__(self, initval=None, name='var'):
+        self.val = initval
+        self.name = name
+  
+    def __get__(self, obj, objtype):
+        print('Retrieving', self.name)
+        return self.val
+  
+    def __set__(self, obj, val):
+        print('Updating', self.name)
+        self.val = val
+  
+class CustomOneToOneField(models.OneToOneField):
+    rel = RevealAccess(True, 'rel')
+ 
+ 
+class Garage(models.Model):
+    car = models.OneToOneField(Car, primary_key=True)
 
