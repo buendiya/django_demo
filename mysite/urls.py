@@ -20,4 +20,5 @@ urlpatterns = [
             'show_indexes': True
         }),
     url(r'^demo/', include("demo.urls")),
+    url(r'^session_demo/', include("session_demo.urls")),
 ]

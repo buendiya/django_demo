@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from import_export.admin import ExportActionModelAdmin
+from import_export.admin import ImportExportActionModelAdmin
 from import_export.resources import ModelResource, ModelDeclarativeMetaclass
 from import_export import fields
 
@@ -49,7 +49,7 @@ class BookModelResource(ModelResource):
         return obj.name.upper()
 
 
-class CustomeExportActionModelAdmin(ExportActionModelAdmin):
+class CustomeExportActionModelAdmin(ImportExportActionModelAdmin):
 
     def get_export_resource_class(self):
         return CustomModelResourceMetaClass('temp_resource_class', (ModelResource, ), {'model_admin': self})

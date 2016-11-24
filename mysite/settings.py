@@ -20,11 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'k0(!p1#hm*(5)blm&k_b55vsls+n&6r!_f6dcj)4mts5e05_n3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', ]
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'demo',
     'contenttype_generic',
     'nested_inline',
+    'import_export',
 )
 
 MIDDLEWARE_CLASSES = (
